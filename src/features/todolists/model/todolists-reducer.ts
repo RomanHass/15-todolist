@@ -129,6 +129,7 @@ export const removeTodolistTC = (id: string) => (dispatch: Dispatch) => {
         dispatch(removeTodolistAC(id))
       } else {
         handleServerAppError(res.data, dispatch)
+        dispatch(changeTodolistEntityStatusAC({ id, entityStatus: "idle" }))
       }
     })
     .catch((error) => {
